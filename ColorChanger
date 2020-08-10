@@ -214,13 +214,13 @@ namespace AnyColorGurrah.Properties
             if (ActiveWeapon == itemname[7]) //Disk //ThrowingStar2
             {
                 sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UASSET";
-                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar2\throwing_star2_emiss.UASSET";
                 File.Copy(sourceFile, destinationFile, true);
                 sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UBULK";
-                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar2\throwing_star2_emiss.UBULK";
                 File.Copy(sourceFile, destinationFile, true);
                 sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UEXP";
-                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar2\throwing_star2_emiss.UEXP";
                 File.Copy(sourceFile, destinationFile, true);
             }
         }
