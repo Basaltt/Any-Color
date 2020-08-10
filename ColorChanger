@@ -1,0 +1,228 @@
+using System;
+using System.IO;
+using System.Windows.Forms;
+
+//Coded using C#
+
+namespace AnyColorGurrah.Properties
+{
+    public partial class ColorChange : Form
+    {
+        private Form _weaponForm;
+        static public string ActiveWeapon;
+        static string sourceFile;
+        static string destinationFile;
+        static public string activeItem;
+        static public string[] itemname = new string[11] { "Sword", "Daggers", "MiniAxe", "Shield", "Glaive", "Spear", "ThrowingStar", "ThrowingStar2", "AxeTwoHand", "Sword2Hands", "SwordDouble" };
+        static public int[] itemnumber = new int[11];
+        static public string[] itemplainname = new string[11] { "Sword", "Dagger", "Axe", "Shield", "Glaive", "Spear", "Throwing Star", "Throwing Disk", "Battleaxe", "Greatsword", "Maul Blade" };
+        static string path = System.IO.Directory.GetCurrentDirectory();
+        static string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\"));
+        static string weaponpath = @"\Content\Weapons\";
+        static string gurrahpath = @"Gurrah\Content\";
+
+        public ColorChange()
+        {
+            InitializeComponent();
+            WeaponText.Text = activeItem;
+        }
+
+        private void RedButton_Click(object sender, EventArgs e) { ColorChanger("Red"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void OrangeButton_Click(object sender, EventArgs e) { ColorChanger("Orange"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void YellowButton_Click(object sender, EventArgs e) { ColorChanger("Yellow"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void GreenButton_Click(object sender, EventArgs e) { ColorChanger("Green"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void MintButton_Click(object sender, EventArgs e) { ColorChanger("Mint"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void CyanButton_Click(object sender, EventArgs e) { ColorChanger("Cyan"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void BlueButton_Click(object sender, EventArgs e) { ColorChanger("Blue"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void PurpleButton_Click(object sender, EventArgs e) { ColorChanger("Purple"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void PinkButton_Click(object sender, EventArgs e) { ColorChanger("Pink"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+        private void CustomButton_Click(object sender, EventArgs e) { ColorChanger("Custom"); Hide(); _weaponForm = new WeaponSelect(); _weaponForm.Show(); }
+
+        private void MenuColorButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            _weaponForm = new WeaponSelect();
+            _weaponForm.Show();
+        }
+
+
+        //devin broke the file structure
+        //i would just do this:
+
+        /*
+            sourceFile = path + @"\Content\Weapons\" + ActiveWeapon + @"\" + ActiveColor + @"\" + ActiveWeapon + @"_emiss.UASSET";
+            destinationFile = newPath + @"Gurrah\Content\Meshes\Weapons\" + ActiveWeapon + @"\Material\" + ActiveWeapon + @"_emiss.UASSET";
+            System.IO.File.Copy(sourceFile, destinationFile, true);
+            sourceFile = path + @"\Content\Weapons\" + ActiveWeapon + @"\" + ActiveColor + @"\" + ActiveWeapon + @"_emiss.UBULK";
+            destinationFile = newPath + @"Gurrah\Content\Meshes\Weapons\" + ActiveWeapon + @"\Material\" + ActiveWeapon + @"_emiss.UBULK";
+            System.IO.File.Copy(sourceFile, destinationFile, true);
+            sourceFile = path + @"\Content\Weapons\" + ActiveWeapon + @"\" + ActiveColor + @"\" + ActiveWeapon + @"_emiss.UEXP";
+            destinationFile = newPath + @"Gurrah\Content\Meshes\Weapons\" + ActiveWeapon + @"\Material\" + ActiveWeapon + @"_emiss.UEXP";
+            System.IO.File.Copy(sourceFile, destinationFile, true);
+         */
+
+        //but random weapons in random locations in random file names
+        //so i gotta do all this manually
+        //please dont make fun of my yandere dev code
+
+
+        static public void ColorChanger(string ActiveColor)
+        {
+            //Sword = 0
+            //Dagger = 1
+            //Axe = 2
+            //Shield = 3
+            //Glaive = 4
+            //Spear = 5
+            //Throwing Star = 6
+            //Throwing Disk = 7
+            //Battleaxe = 8
+            //Greatsword = 9
+            //Dual Sword = 10
+
+            if (ActiveWeapon == itemname[4]) //Glaive
+            {
+                sourceFile = path + weaponpath + @"Glaive\" + ActiveColor + @"\glaive_emiss2.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Glaive\glaive_emiss2.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Glaive\" + ActiveColor + @"\glaive_emiss2.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Glaive\glaive_emiss2.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Glaive\" + ActiveColor + @"\glaive_emiss2.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Glaive\glaive_emiss2.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+            
+            if (ActiveWeapon == itemname[0]) //Sword
+            {
+                sourceFile = path + weaponpath + @"Sword\" + ActiveColor + @"\sword_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword\Material\sword_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Sword\" + ActiveColor + @"\sword_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword\Material\sword_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Sword\" + ActiveColor + @"\sword_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword\Material\sword_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[1]) //Dagger
+            {
+                sourceFile = path + weaponpath + @"Daggers\" + ActiveColor + @"\dagger02_emiss1.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Daggers\Dagger2\dagger02_emiss1.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Daggers\" + ActiveColor + @"\dagger02_emiss1.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Daggers\Dagger2\dagger02_emiss1.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Daggers\" + ActiveColor + @"\dagger02_emiss1.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Daggers\Dagger2\dagger02_emiss1.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+
+            if (ActiveWeapon == itemname[2]) //Axe
+            {
+                sourceFile = path + weaponpath + @"MiniAxe\" + ActiveColor + @"\mini_axe_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\MiniAxe\textures\mini_axe_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"MiniAxe\" + ActiveColor + @"\mini_axe_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\MiniAxe\textures\mini_axe_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"MiniAxe\" + ActiveColor + @"\mini_axe_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\MiniAxe\textures\mini_axe_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[3]) //Shield
+            {
+                sourceFile = path + weaponpath + @"Shield\" + ActiveColor + @"\shield_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Shield\shield_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Shield\" + ActiveColor + @"\shield_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Shield\shield_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Shield\" + ActiveColor + @"\shield_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Shield\shield_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[10]) //Maul Blade
+            {
+                sourceFile = path + weaponpath + @"SwordDouble\" + ActiveColor + @"\sword_double_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Weapons\SwordDouble\sword_double_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"SwordDouble\" + ActiveColor + @"\sword_double_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Weapons\SwordDouble\sword_double_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"SwordDouble\" + ActiveColor + @"\sword_double_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Weapons\SwordDouble\sword_double_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[5]) //Spear
+            {
+                sourceFile = path + weaponpath + @"Spear\" + ActiveColor + @"\spear_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Spear\spear_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Spear\" + ActiveColor + @"\spear_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Spear\spear_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Spear\" + ActiveColor + @"\spear_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Spear\spear_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[9]) //Greatsword
+            {
+                sourceFile = path + weaponpath + @"Sword2Hands\" + ActiveColor + @"\sword_twohand_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword2Hands\sword_twohand_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Sword2Hands\" + ActiveColor + @"\sword_twohand_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword2Hands\sword_twohand_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"Sword2Hands\" + ActiveColor + @"\sword_twohand_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\Sword2Hands\sword_twohand_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[8]) //Battleaxe
+            {
+                sourceFile = path + weaponpath + @"AxeTwoHand\" + ActiveColor + @"\Battle_Axe_Emissive.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\AxeTwoHand\Textures\Battle_Axe_Emissive.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"AxeTwoHand\" + ActiveColor + @"\Battle_Axe_Emissive.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\AxeTwoHand\Textures\Battle_Axe_Emissive.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"AxeTwoHand\" + ActiveColor + @"\Battle_Axe_Emissive.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\AxeTwoHand\Textures\Battle_Axe_Emissive.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+                
+            if (ActiveWeapon == itemname[6]) //Star //ThrowingStar
+            {
+                sourceFile = path + weaponpath + @"ThrowingStar\" + ActiveColor + @"\throwing_star_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"ThrowingStar\" + ActiveColor + @"\throwing_star_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"ThrowingStar\" + ActiveColor + @"\throwing_star_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+
+            if (ActiveWeapon == itemname[7]) //Disk //ThrowingStar2
+            {
+                sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UASSET";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UASSET";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UBULK";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UBULK";
+                File.Copy(sourceFile, destinationFile, true);
+                sourceFile = path + weaponpath + @"ThrowingStar2\" + ActiveColor + @"\throwing_star2_emiss.UEXP";
+                destinationFile = newPath + gurrahpath + @"Meshes\Weapons\ThrowingStar\throwing_star2_emiss.UEXP";
+                File.Copy(sourceFile, destinationFile, true);
+            }
+        }
+    }
+}
