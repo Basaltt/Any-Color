@@ -1,0 +1,152 @@
+using System;
+using System.Windows.Forms;
+
+//Coded using C#
+
+namespace AnyColorGurrah.Properties
+{
+
+    public partial class WeaponSelect : Form
+    {
+        private Form _introForm;
+        private Form _colorForm;
+
+        //Sword = 0
+        //Dagger = 1
+        //Axe = 2
+        //Shield = 3
+        //Glaive = 4
+        //Spear = 5
+        //Throwing Star = 6
+        //Throwing Disk = 7
+        //Battleaxe = 8
+        //Greatsword = 9
+        //Dual Sword = 10
+
+        public WeaponSelect()
+        {
+            InitializeComponent();
+        }
+
+        private void MenuButton_Click_1(object sender, EventArgs e)
+        {
+            Hide();
+            _introForm = new Intro();
+            _introForm.Show();
+        }
+
+        private void DIYButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://youtu.be/eJE4cfm0ew0");
+        }
+
+        private void Axe_Click_1(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[2];
+            ColorChange.ActiveWeapon = ColorChange.itemname[2];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void ThrowingDisk_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[7];
+            ColorChange.ActiveWeapon = ColorChange.itemname[7];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void SwordButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[0];
+            ColorChange.ActiveWeapon = ColorChange.itemname[0];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void DaggerButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[1];
+            ColorChange.ActiveWeapon = ColorChange.itemname[1];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void ShieldButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[3];
+            ColorChange.ActiveWeapon = ColorChange.itemname[3];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void Spear_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[5];
+            ColorChange.ActiveWeapon = ColorChange.itemname[5];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void Glaive_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[4];
+            ColorChange.ActiveWeapon = ColorChange.itemname[4];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void BattleaxeButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[8];
+            ColorChange.ActiveWeapon = ColorChange.itemname[8];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void GreatSwordButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[9];
+            ColorChange.ActiveWeapon = ColorChange.itemname[9];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void ThrowingStarButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[6];
+            ColorChange.ActiveWeapon = ColorChange.itemname[6];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+        private void DoubleButton_Click(object sender, EventArgs e)
+        {
+            ColorChange.activeItem = ColorChange.itemplainname[10];
+            ColorChange.ActiveWeapon = ColorChange.itemname[10];
+            _colorForm = new ColorChange();
+            _colorForm.Show();
+            Hide();
+        }
+
+
+        private void RestoreButton_Click(object sender, EventArgs e)
+        {
+            foreach (string weapon in ColorChange.itemname)
+            {
+                ColorChange.ActiveWeapon = weapon;
+                ColorChange.ColorChanger("Default");
+            }
+        }
+    }
+}
